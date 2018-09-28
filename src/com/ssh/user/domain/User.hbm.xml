@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.ssh.user.domain">
+	<class name="User" table="user">
+		<!-- 主键生成策略 -->
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+             <!--主键生成策略,这里表示自增长-->
+            <generator class="identity" />
+        </id>
+		<!--
+			property为普通属性，name对应为属性字段，type为该字段类型
+			（有2种方式：hibernate《string》和java《java.lang.String》）
+		-->
+		<property name="name" column="name" type="string"></property>
+		<property name="age" column="age" type="java.lang.Integer"></property>
+	</class>
+</hibernate-mapping>

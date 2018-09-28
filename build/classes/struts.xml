@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 开发者模式 
+	当开发者模式打开后，struts2会拦截action异常，进行友好提示。
+	有个副作用，会拦截ajax请求，但不会处理。struts的错误处理只会做同步处理。
+	-->
+   <!--  <constant name="struts.devMode" value="true" /> -->
+   <!-- 自动加载核心配置文件开关 -->
+   <constant name="struts.configuration.xml.reload" value="true"/>
+	<!-- 使用简单样式 -->
+	<constant name="struts.ui.theme" value="simple"/>
+	<!-- 自定义包，编写自己action等配置 -->
+    <package name="default" namespace="/" extends="struts-default">
+		<!-- 配置action：图书 -->
+		<!-- 1.struts2主动构建action，主动到spring容器中获取service的bean -->
+		<!-- <action name="book_*" class="cn.itcast.ssh.web.action.BookAction" method="{1}">
+		</action> -->
+		<!-- 2.spring来创建action，spring主动注入service 
+		class：伪类名。必须是spring容器中bean的名字
+		原理：当将spring和struts2的整合插件包放入到项目中的时候，action的对象工厂发生了变化了，
+		新的对象工厂会根据class类型字符串反射出来具体类，实例化。
+		但是，如果你写的是伪类名，那么新的对象工厂将无法反射出来类，那么对象工厂很聪明，自动到spring容器中根据伪类名去寻找对象。
+		
+		-->
+		<!-- 非注解开发配置action -->
+		<!-- <action name="hello" class="userAction" method="hello">
+			<result name="success">/WEB-INF/hello.jsp</result>
+		</action>
+		<action name="addUser" class="userAction" method="addUser">
+			<result name="success">/WEB-INF/hello.jsp</result>
+		</action> -->
+    </package>
+</struts>
